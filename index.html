@@ -21,19 +21,22 @@
             <h3>
                 Username
             </h3>
-            <input type="text" required />
+            <input type="text" class="text-input" id="username" required />
         </div>
         
         <div>
             <h3>
                 Password
             </h3>
-            <input type="password" required />
+            <input type="password" class="text-input" id="password" required />
         </div>
         
-        <button value="Login">Login</button>
+        <button class="login-register" id="login">Login</button>
         
-        <p>Don't have an account? <span>Register here</span></p>
+        <p id="account-text">
+            Don't have an account? 
+            <span id="register-here">Register here</span>
+        </p>
     </div>
     <script src="script.js"></script>
 </body>
