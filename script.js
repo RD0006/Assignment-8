@@ -35,8 +35,127 @@ document.addEventListener("click", (e) => {
 
         if (lsd[username] == password) {
             const body = document.body;
-            const loginDiv = document.querySelector("#login-div");
-            body.removeChild(loginDiv);
+            body.innerHTML = `<main>
+        <div id="main-1">
+            <div id="main-1-part-1">
+                <div class="brandname-div">
+                    <i class="ri-stack-fill"></i>
+                    <div class="brandname">
+                        <h2>FinTrack Pro</h2>
+                        <p>Enterprise Finance</p>
+                    </div>
+                </div>
+                <div class="buttons-div">
+                    <button id="dashboard-button">
+                        <i class="ri-layout-grid-line"></i>
+                        Dashboard
+                    </button>
+                    <button id="settings-button">
+                        <i class="ri-settings-3-fill"></i>
+                        Settings
+                    </button>
+                </div>
+            </div>
+            <div id="main-1-part-2">
+                <button id="add-transaction">
+                    <i class="ri-add-line"></i>
+                    Add Transaction
+                </button>
+            </div>
+        </div>
+        <div id="main-2">
+            <div id="main-2-part-1">
+                <div id="username-display">
+                    Username
+                </div>
+                <button id="logout-button">
+                    Logout
+                </button>
+            </div>
+            <div id="main-2-part-2">
+                <div id="heading">
+                    <h1>Financial Overview</h1>
+                    <p>Real-time tracking application</p>
+                </div>
+                <div id="part-1">
+                    <div class="card" id="card-1">
+                        <div class="card-icon blue-card-icon">
+                            <i class="ri-bank-line"></i>
+                        </div>
+                        <p>Current Balance</p>
+                        <div class="card-value" id="current-balance">
+                            $0
+                        </div>
+                    </div>
+                    <div class="card" id="card-2">
+                        <div class="card-icon green-card-icon">
+                            <i class="ri-arrow-right-up-line"></i>
+                        </div>
+                        <p>Total Income</p>
+                        <div class="card-value" id="total-income">
+                            $0
+                        </div>
+                    </div>
+                    <div class="card" id="card-3">
+                        <div class="card-icon red-card-icon">
+                            <i class="ri-arrow-right-down-line"></i>
+                        </div>
+                        <p>Total Income</p>
+                        <div class="card-value" id="total-expense">
+                            $0
+                        </div>
+                    </div>
+                    <div class="card" id="card-4">
+                        <div class="card-icon blue-card-icon">
+                            <i class="ri-hand-coin-line"></i>
+                        </div>
+                        <p>Total Income</p>
+                        <div class="card-value" id="total-transactions">
+                            0
+                        </div>
+                    </div>
+                </div>
+                <div id="part-2">
+                    <h2>Cash Flow Analysis</h2>
+                    <canvas id="cashFlowChart" style="box-sizing: border-box; display: block; height: 250px; width: 536.9px;" width="805" height="375"></canvas>
+                </div>
+                <div id="part-3">
+                    <h2>Preferences</h2>
+                    <div id="theme-preference">
+                        <h4>Dark Mode</h4>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <button id="reset-all-data">
+                        <i class="ri-delete-bin-4-line"></i>
+                        Reset All Data
+                    </button>
+                </div>
+                <div id="part-4">
+                    <h2>All Transactions</h2>
+                    <table>
+                        <th>
+                            DATE
+                        </th>
+                        <th>
+                            DESCRIPTION
+                        </th>
+                        <th>
+                            CATEGORY
+                        </th>
+                        <th>
+                            AMOUNT
+                        </th>
+                        <th>
+                            ACTIONS
+                        </th>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>`;
         }
         else {
             window.alert("Invalid username or password!");
