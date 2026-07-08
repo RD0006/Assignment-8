@@ -90,7 +90,7 @@ span {
 main {
     width: 100%;
 
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
 }
@@ -170,12 +170,12 @@ main div {
 }
 
 #main-2-part-2 {
-    height: calc(150vh - 70px);
+    min-height: calc(100vh - 70px);
     padding: 2%;
     
     display: grid;
     grid-template-columns: 1fr 1fr 0.5fr 0.5fr 1fr;
-    grid-template-rows: repeat(9, 1fr);
+    grid-template-rows: auto auto auto minmax(250px, auto) minmax(250px, auto) auto auto auto auto;
     grid-template-areas: 
     "heading heading heading heading heading"
     "part-1 part-1 part-1 part-1 part-1"
@@ -358,6 +358,8 @@ main div {
     background-color: whitesmoke;
     grid-area: part-2;
     padding: 20px 10px;
+    min-height: 400px;
+    max-height: 400px;
 
     border: 1px rgb(218, 214, 214) solid;
     border-radius: 10px;   
@@ -385,6 +387,8 @@ canvas {
     background-color: whitesmoke;
     grid-area: part-3;
     padding: 20px 10px;
+    min-height: 200px;
+    max-height: 200px;
 
     border: 1px rgb(218, 214, 214) solid;
     border-radius: 10px;
@@ -495,7 +499,8 @@ input:checked + .slider:before {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between; 
+    justify-content: flex-start;
+    gap: 20px; 
 }
 
 #part-4 h2 {
@@ -513,4 +518,75 @@ th {
     color: rgb(99, 99, 99);
 
     font-weight: bold;
+}
+
+#add-transaction-dialog {
+    width: 400px;
+    height: 500px;
+    margin: auto;
+    padding: 40px;
+
+    border: 2px black solid;
+    border-radius: 10px;
+
+    display: none;
+}
+
+#add-transaction-form {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 20px;
+}
+
+#add-transaction-form div {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 8px;
+}
+
+#add-transaction-form div label {
+    font-size: 15px;
+}
+
+#add-transaction-form div input {
+    width: 310px;
+    height: 25px;
+    padding: 2px;
+
+    border: 1px lightslategray solid;
+    border-radius: 5px;
+    
+    font-size: 15px;
+}
+
+#add-transaction-form div select {
+    width: 310px;
+    height: 25px;
+    padding: 2px;
+
+
+    border: 1px lightslategray solid;
+    border-radius: 5px;
+    
+    font-size: 15px;
+}
+
+#save-transaction {
+    width: 310px;
+    height: 40px;
+    padding: 10px;
+
+    background-color: black;
+    color: white;
+
+    font-weight: bold;
+
+    border: none;
+    border-radius: 10px;
+
+    cursor: pointer;
 }
