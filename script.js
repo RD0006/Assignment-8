@@ -1,3 +1,29 @@
+let refreshAttributes = () => {
+    const transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+
+    let income = 0;
+    let expense = 0;
+
+    transactions.forEach(transaction => {
+        if (transaction.type == "Income") 
+            income += Number(transaction.amount);
+        else 
+            expense += Number(transaction.amount);
+    });
+
+    updateChart(income, expense);
+
+    let currentBalance = document.querySelector("#current-balance");
+    let totalIncome = document.querySelector("#total-income");
+    let totalExpense = document.querySelector("#total-expense");
+    let totalTransactions = document.querySelector("#total-transactions");
+
+    currentBalance.textContent = `$${income - expense}`;
+    totalIncome.textContent = `$${income}`;
+    totalExpense.textContent = `$${expense}`;
+    totalTransactions.textContent =`${transactions.length}`;
+}
+
 document.addEventListener("click", (e) => {
 
     if (e.target.id == "register-here") {
@@ -104,14 +130,26 @@ document.addEventListener("click", (e) => {
 
         if (transactionType.trim() == "" || transactionDescription.trim() == "" || transactionAmount.trim() == "" || transactionDate.trim() == "" || transactionCategory.trim() == "") 
         {
-            window.alert("Please fill all fields");
+            window.alert("Please fill all fields correctly!");
             return;
         }
-        console.log(transactionType);
-        console.log(transactionDescription);
-        console.log(transactionAmount);
-        console.log(transactionDate);
-        console.log(transactionCategory);
+
+        var lsd = localStorage.getItem("transactions");
+        if (lsd == null) {
+            lsd = [];
+        }
+        else {
+            lsd = JSON.parse(lsd);
+        }
+
+        lsd.push({
+            date: transactionDate,
+            description: transactionDescription,
+            category: transactionCategory,
+            amount: transactionAmount,
+            type: transactionType
+        })
+        localStorage.setItem("transactions", JSON.stringify(lsd));
 
         const table = document.querySelector("table");
         table.innerHTML += `
@@ -133,9 +171,54 @@ document.addEventListener("click", (e) => {
                 </td>
             </tr>
         `
+        let chart_ = document.querySelector("canvas");
+
         dialog.close();      
         dialog.style.display = "none";
         form.reset();
+        refreshAttributes();
+    }
+    
+    if (e.target.id == "reset-all-data") {
+        localStorage.setItem("transactions", JSON.stringify([]));
+
+        updateChart(0, 0);
+
+        const table = document.querySelector("table");
+        table.innerHTML = `
+        <th>
+            DATE
+        </th>
+        <th>
+            DESCRIPTION
+        </th>
+        <th>
+            CATEGORY
+        </th>
+        <th>
+            AMOUNT
+        </th>
+        <th>
+            ACTIONS
+        </th>
+        `;
+
+        let currentBalance = document.querySelector("#current-balance");
+        let totalIncome = document.querySelector("#total-income");
+        let totalExpense = document.querySelector("#total-expense");
+        let totalTransactions = document.querySelector("#total-transactions");
+
+        currentBalance.textContent = "$0";
+        totalIncome.textContent = "$0";
+        totalExpense.textContent = "$0";
+        totalTransactions.textContent = "0";
+    }
+
+    if (e.target.id == "logout-button") {
+        const main = document.querySelector("main");
+        const loginDiv = document.querySelector("#login-div");
+        main.style.display = "none";
+        loginDiv.style.display = "flex";
     }
 });
 
@@ -162,3 +245,37 @@ function updateChart(income, expense) {
 
 let chart_ = document.querySelector("canvas");
 updateChart(0, 0);
+
+var lsd = localStorage.getItem("transactions");
+    if (lsd != null) {
+
+        const table = document.querySelector("table");
+
+        lsd = JSON.parse(lsd);
+
+        lsd.forEach(element => {
+            table.innerHTML += `
+            <tr>
+                <td>
+                    ${element.date}
+                </td>
+                <td>
+                    ${element.description}
+                </td>
+                <td>
+                    ${element.category}
+                </td>
+                <td>
+                    ${element.amount}
+                </td>
+                <td>
+                    
+                </td>
+            </tr>
+            `
+
+            refreshAttributes();
+        });
+        
+    }
+
