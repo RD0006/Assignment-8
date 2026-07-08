@@ -359,7 +359,7 @@ main div {
 #canvas-div {
     min-height: 450px;
     max-height: 400px;
-    max-width: 600px;
+    max-width: 550px;
     padding: 20px 10px;
 
     background-color: whitesmoke;
