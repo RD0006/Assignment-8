@@ -39,6 +39,9 @@ document.addEventListener("click", (e) => {
             const loginDiv = document.querySelector("#login-div");
             loginDiv.style.display = "none";
             main.style.display = "flex";
+            
+            const usernameDisplay = document.querySelector("#username-display");
+            usernameDisplay.textContent = username;
         }
         else {
             window.alert("Invalid username or password!");
@@ -158,6 +161,4 @@ function updateChart(income, expense) {
     }
 
 let chart_ = document.querySelector("canvas");
-chart_.addEventListener("click", () => {
-    updateChart(0, 0);
-});
+updateChart(0, 0);

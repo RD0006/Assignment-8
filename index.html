@@ -84,7 +84,7 @@
                     <h1>Financial Overview</h1>
                     <p>Real-time tracking application</p>
                 </div>
-                <div id="part-1">
+                <div id="cards">
                     <div class="card" id="card-1">
                         <div class="card-icon blue-card-icon">
                             <i class="ri-bank-line"></i>
@@ -122,25 +122,28 @@
                         </div>
                     </div>
                 </div>
-                <div id="part-2">
-                    <h2>Cash Flow Analysis</h2>
-                    <canvas id="cashFlowChart" style="box-sizing: border-box; display: block; height: 250px; width: 536.9px;" width="805" height="375"></canvas>
-                </div>
-                <div id="part-3">
-                    <h2>Preferences</h2>
-                    <div id="theme-preference">
-                        <h4>Dark Mode</h4>
-                        <label class="switch">
-                            <input type="checkbox">
-                            <span class="slider round"></span>
-                        </label>
+                <section id="canvas-and-preferences">
+                    <div id="canvas-div">
+                        <h2>Cash Flow Analysis</h2>
+                        <canvas id="cashFlowChart" style="box-sizing: border-box; display: block; height: 250px; width: 536.9px;" width="805" height="375"></canvas>
                     </div>
-                    <button id="reset-all-data">
-                        <i class="ri-delete-bin-4-line"></i>
-                        Reset All Data
-                    </button>
-                </div>
-                <div id="part-4">
+                    <div id="preferences-div">
+                        <h2>Preferences</h2>
+                        <div id="theme-preference">
+                            <h4>Dark Mode</h4>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <button id="reset-all-data">
+                            <i class="ri-delete-bin-4-line"></i>
+                            Reset All Data
+                        </button>
+                    </div>
+                </section>
+                
+                <div id="all-transactions">
                     <h2>All Transactions</h2>
                     <table>
                         <th>
